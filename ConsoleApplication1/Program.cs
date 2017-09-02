@@ -13,7 +13,7 @@ namespace ConsoleApplication1
         static void Main(string[] args)
         {
             
-            Console.WriteLine(IntegerToHex.IntToHex(100));
+            Console.WriteLine(IntegerToHex.IntToHex(127));
             
             //Console.WriteLine(HexToInteger.HexToInt("FF"));//make sure to check input to not permit letters above F?
 
@@ -47,15 +47,15 @@ namespace ConsoleApplication1
             int valueExperiment = value;
             int bit;
             string answerExperiment = "";
-            int k = 4;
+            int k = 4;//half the number of bits in the original integer value, so 4 for up thorugh 127
 
             Console.WriteLine("Intitial Integer Value: " + value);
 
-            while (valueExperiment > 0)
+            while (valueExperiment > 0)//this is only working for integer values up to a certain amount, the problem is with how to initialize k, if k = 4 then works up to 127, or up until 8 bits are filled, so k is half the number of bits of the value
             {
                 bit = valueExperiment & 15;
                 listExperiment.Add(bit);
-                valueExperiment >>= 1 * k;//i think i do need to push it over once every time because i will lose data otherwise, but then compare with 1 still?
+                valueExperiment >>= 1 * k;
                 k--;
             }
 
